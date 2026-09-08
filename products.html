@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Catalog — Geminol Lubes Corporation</title>
+<meta name="description" content="71 lubricant formulations from Geminol Lubes Corporation — automotive and industrial oils and greases, searchable by segment.">
+<link rel="icon" href="geminol-logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="geminol-logo-r.png" alt="Geminol Lubes Corporation, registered trademark" class="logo-img">
+      <span class="brand-tag">Lubes Corporation</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <nav>
+      <ul class="nav-menu" id="primaryNav">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="about.html">Profile</a></li>
+        <li><a href="products.html" class="active" aria-current="page">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" style="padding-bottom:3rem;">
+    <div class="container" style="max-width:760px;">
+      <span class="badge">Full catalog</span>
+      <h1 style="max-width:none;">71 formulations, sorted by what they're actually for.</h1>
+      <p class="lede">Filter by range or search a product name — every automotive and industrial formulation Geminol currently manufactures is listed below.</p>
+      <div class="catalog-hero-stats">
+        <div><strong>16</strong>Automotive</div>
+        <div><strong>55</strong>Industrial &amp; specialty</div>
+        <div><strong>13</strong>Segments</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="catalogSection">
+    <div class="container">
+
+      <p class="lede" style="margin-bottom:2rem; font-size:0.95rem;">Standard trade packs run pails and barrels across the range, with tanker quantities available on request for the higher-volume industrial oils. Tap a row below to quote that formulation on the <a href="contact.html">RFQ form</a>.</p>
+
+      <div class="filter-bar">
+        <div class="filter-tabs" role="tablist" aria-label="Filter by range">
+          <button data-cat="All" class="is-active" aria-pressed="true">All formulations</button>
+          <button data-cat="Automotive" id="automotive" aria-pressed="false">Automotive</button>
+          <button data-cat="Industrial" id="industrial" aria-pressed="false">Industrial &amp; specialty</button>
+        </div>
+        <div class="search-wrap">
+          <input type="text" id="search" placeholder="Search a product name…" aria-label="Search products">
+        </div>
+      </div>
+
+      <div class="segment-chips" id="segmentChips">
+        <!-- populated below -->
+      </div>
+
+      <div class="result-bar">
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+        <button type="button" class="clear-filters" id="clearFilters" hidden>Clear filters</button>
+      </div>
+
+      <div class="spec-table" id="specTable">
+        <div class="spec-row head">
+          <span></span>
+          <span>Formulation</span>
+          <span>Range</span>
+          <span>Segment</span>
+        </div>
+        <div id="tableBody"></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="footer-brand">
+        <span class="footer-logo-chip"><img src="geminol-logo-r.png" alt="Geminol Lubes Corporation, registered trademark"></span>
+        <span class="brand-tag">Lubes Corporation</span>
+      </div>
+      <p>SF.No: 316/4B, Abbas Garden West Thottam, Luna Nagar, Coimbatore – 641025, Tamil Nadu.</p>
+    </div>
+    <div>
+      <h4>Direct communications</h4>
+      <p class="mono">Cell: 7598373183<br>Landline: 04222403993<br>Email: geminolcbe@gmail.com</p>
+    </div>
+    <div>
+      <h4>Statutory identifiers</h4>
+      <p class="mono">MSME (Micro): UDYAM-TN-03-0025615<br>GSTIN: 33ADFPT2008R1Z9<br>State code: 33 — Tamil Nadu</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Geminol Lubes Corporation. All rights reserved.</span>
+    <span>Site by <a href="https://dexys.in" target="_blank" rel="noopener">Dexys IT Solutions</a></span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+(function(){
+  const tableBody = document.getElementById('tableBody');
+  const resultCount = document.getElementById('resultCount');
+  const clearBtn = document.getElementById('clearFilters');
+  const searchInput = document.getElementById('search');
+  const catButtons = document.querySelectorAll('.filter-tabs button');
+  const segmentChipsWrap = document.getElementById('segmentChips');
+
+  let activeCat = 'All';
+  let activeSegment = 'All';
+  let query = '';
+
+  function segmentsFor(cat){
+    const pool = cat === 'All' ? GEMINOL_CATALOG : GEMINOL_CATALOG.filter(p => p.category === cat);
+    return ['All', ...Array.from(new Set(pool.map(p => p.segment)))];
+  }
+
+  function renderChips(){
+    const segs = segmentsFor(activeCat);
+    if (!segs.includes(activeSegment)) activeSegment = 'All';
+    segmentChipsWrap.innerHTML = segs.map(s =>
+      `<button data-seg="${s}" class="${s === activeSegment ? 'is-active' : ''}" aria-pressed="${s === activeSegment}">${s === 'All' ? 'All segments' : s}</button>`
+    ).join('');
+    segmentChipsWrap.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeSegment = btn.dataset.seg;
+        renderChips();
+        renderTable();
+      });
+    });
+  }
+
+  function updateClearButton(){
+    const hasFilters = activeCat !== 'All' || activeSegment !== 'All' || query.trim() !== '';
+    clearBtn.hidden = !hasFilters;
+  }
+
+  function renderTable(){
+    let rows = GEMINOL_CATALOG.filter(p => activeCat === 'All' || p.category === activeCat);
+    if (activeSegment !== 'All') rows = rows.filter(p => p.segment === activeSegment);
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      rows = rows.filter(p => p.name.toLowerCase().includes(q));
+    }
+
+    resultCount.textContent = `${rows.length} of 71 formulations`;
+    updateClearButton();
+
+    if (!rows.length) {
+      tableBody.innerHTML = `<div class="empty-state">No formulation matches that search. Try a shorter term, or clear the filter.</div>`;
+      return;
+    }
+
+    tableBody.innerHTML = rows.map((p, i) => {
+      const params = new URLSearchParams({ product: p.name, category: p.category });
+      return `
+      <a class="spec-row" href="contact.html?${params.toString()}" title="Request a quote for ${p.name}">
+        <span class="idx">${String(i + 1).padStart(2, '0')}</span>
+        <span class="name">${p.name}<span class="seg-inline">${p.segment}</span></span>
+        <span class="cat">${p.category}</span>
+        <span class="seg">${p.segment}</span>
+      </a>
+    `;
+    }).join('');
+  }
+
+  catButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      catButtons.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
+      activeCat = btn.dataset.cat;
+      renderChips();
+      renderTable();
+    });
+  });
+
+  let searchTimer;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimer);
+    const value = e.target.value;
+    searchTimer = setTimeout(() => { query = value; renderTable(); }, 120);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    activeCat = 'All';
+    activeSegment = 'All';
+    query = '';
+    searchInput.value = '';
+    catButtons.forEach(b => { b.classList.toggle('is-active', b.dataset.cat === 'All'); b.setAttribute('aria-pressed', b.dataset.cat === 'All' ? 'true' : 'false'); });
+    renderChips();
+    renderTable();
+  });
+
+  // deep-link support: #automotive / #industrial — filter, then scroll the
+  // results into view under the sticky header
+  const hash = window.location.hash.replace('#', '');
+  if (hash === 'automotive' || hash === 'industrial') {
+    const target = document.getElementById(hash);
+    if (target) {
+      target.click();
+      document.getElementById('catalogSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  renderChips();
+  renderTable();
+})();
+</script>
+</body>
+</html>
