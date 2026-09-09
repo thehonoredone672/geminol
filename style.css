@@ -7,8 +7,6 @@
    structure; blue carries links and voice. Mono type reserved for data.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap');
-
 :root{
   /* --- color: derived from the Geminol logo --- */
   --canvas:      #F4F6F4;
@@ -744,7 +742,7 @@ a.spec-row:hover .name{ color:var(--blue-deep); }
   .stat-line .stat:first-child{ border-top:none; }
   .spec-row{ grid-template-columns:2.4rem 2fr 1fr; }
   .spec-row .seg{ display:none; }
-  .spec-row.head .seg{ display:none; }
+  .spec-row.head .head-seg{ display:none; }
   .seg-inline{
     display:block;
     font-family:var(--f-mono);
@@ -753,6 +751,14 @@ a.spec-row:hover .name{ color:var(--blue-deep); }
     font-weight:400;
     margin-top:0.2rem;
   }
+  .segment-chips{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    padding-bottom:0.6rem;
+  }
+  .segment-chips button{ flex:none; white-space:nowrap; }
 }
 @media (max-width: 720px){
   .reason-grid{ grid-template-columns:1fr; }
