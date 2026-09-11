@@ -101,8 +101,12 @@
               <label for="notes">Anything else the desk should know</label>
               <textarea id="notes" name="notes" placeholder="Delivery timeline, application, or technical requirement"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send request to the laboratory desk</button>
-            <p class="form-note" id="formNote">Opens in your email app, addressed to the desk — nothing sends automatically.</p>
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+  Send enquiry via WhatsApp
+            </button>
+            <p class="form-note" id="formNote">
+  WhatsApp will open with your enquiry pre-filled. Review and tap Send.
+            </p>
           </form>
         </div>
 
@@ -144,34 +148,55 @@
   const formIntro = document.getElementById('formIntro');
   const formNote = document.getElementById('formNote');
 
-  // Prefill from a catalog "quote this" link: contact.html?product=...&category=...
+  // Prefill from a catalog "quote this" link:
+  // contact.html?product=...&category=...
   const params = new URLSearchParams(window.location.search);
   const product = params.get('product');
   const category = params.get('category');
+
   if (product) {
     formulationInput.value = product;
-    formIntro.textContent = `Quoting ${product}${category ? ' (' + category + ' range)' : ''} — fill in your details and the desk will follow up.`;
+
+    formIntro.textContent =
+      `Quoting ${product}${category ? ' (' + category + ' range)' : ''} — fill in your details and the desk will follow up.`;
+
     document.getElementById('company').focus();
   }
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
-    const data = Object.fromEntries(new FormData(form).entries());
-    const subject = `RFQ — ${data.company || 'New enquiry'}${data.formulation ? ' — ' + data.formulation : ''}`;
-    const bodyLines = [
-      `Company / plant: ${data.company || '-'}`,
-      `Email: ${data.email || '-'}`,
-      `Formulation required: ${data.formulation || '-'}`,
-      `Packaging & volume: ${data.volume || '-'}`,
-      `Notes: ${data.notes || '-'}`,
-    ];
-    const mailto = `mailto:geminolcbe@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
-    formNote.textContent = 'Opening your email app now — review the message and hit send.';
-    window.location.href = mailto;
+
+    const data = Object.fromEntries(
+      new FormData(form).entries()
+    );
+
+    const message = `
+*New Commercial RFQ — Geminol Lubes Corporation*
+
+*Company / Plant:* ${data.company || '-'}
+*Official Email:* ${data.email || '-'}
+*Formulation Required:* ${data.formulation || '-'}
+*Packaging & Volume:* ${data.volume || '-'}
+*Notes:* ${data.notes || '-'}
+
+Please review this enquiry and contact us regarding the quotation.
+    `.trim();
+
+    // Geminol WhatsApp number
+    const whatsappNumber = '917598373183';
+
+    const whatsappURL =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    formNote.textContent =
+      'Opening WhatsApp now — review the enquiry and tap Send.';
+
+    window.open(whatsappURL, '_blank');
   });
 })();
 </script>
