@@ -5,17 +5,29 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
-  const menu = document.querySelector('.nav-menu');
+  const menu = document.querySelector('.nav-panel');
+
+  // Keep the full-screen mobile panel positioned exactly below the header,
+  // whatever its actual rendered height (logo wraps, font swap, etc).
+  if (header) {
+    const setHeaderHeight = () => {
+      document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
+    };
+    setHeaderHeight();
+    window.addEventListener('resize', setHeaderHeight);
+  }
 
   // Mobile nav: open/close, close on link click, outside click, and Escape
   if (toggle && menu) {
     const closeMenu = () => {
       menu.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     };
     const openMenu = () => {
       menu.classList.add('is-open');
       toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
     };
 
     toggle.addEventListener('click', (e) => {
@@ -36,6 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         closeMenu();
         toggle.focus();
       }
+    });
+
+    // A resize past the mobile breakpoint (e.g. rotating to landscape,
+    // or a tablet/desktop dev-tools resize) shouldn't leave the panel
+    // open with the page scroll locked.
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 720) closeMenu();
     });
   }
 
