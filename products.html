@@ -5,10 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Product Catalog — Geminol Lubes Corporation</title>
 <meta name="description" content="71 lubricant formulations from Geminol Lubes Corporation — automotive and industrial oils and greases, searchable by segment.">
-<link rel="icon" href="geminol-logo-r.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<link rel="icon" href="geminol-logo.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,27 +15,18 @@
   <div class="header-inner">
     <a href="index.html" class="brand">
       <img src="geminol-logo-r.png" alt="Geminol Lubes Corporation, registered trademark" class="logo-img">
-      <span class="brand-info">
-        <span class="brand-tagline">Genuine Mineral Oil Blended Lubricating Oils</span>
-        <span class="brand-sector">Automobile and Industrial Sector</span>
-      </span>
+      <span class="brand-tag">Lubes Corporation</span>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
     <nav>
-      <div class="nav-panel" id="primaryNav">
-        <ul class="nav-menu">
-          <li><a href="index.html">Overview</a></li>
-          <li><a href="about.html">Profile</a></li>
-          <li><a href="products.html" class="active" aria-current="page">Catalog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-quick">
-          <a href="tel:+917598373183" class="nav-quick-link"><span class="k">Call the works</span><span class="v">7598373183</span></a>
-          <a href="mailto:geminolcbe@gmail.com" class="nav-quick-link"><span class="k">Email the desk</span><span class="v">geminolcbe@gmail.com</span></a>
-        </div>
-      </div>
+      <ul class="nav-menu" id="primaryNav">
+        <li><a href="index.html">Overview</a></li>
+        <li><a href="about.html">Profile</a></li>
+        <li><a href="products.html" class="active" aria-current="page">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
   </div>
 </header>
@@ -61,10 +49,10 @@
   <section class="section section--tight" id="catalogSection">
     <div class="container">
 
-      <p class="lede" style="margin-bottom:2rem; font-size:0.95rem;">Standard trade packs run pails and barrels across the range, with tanker quantities available on request for the higher-volume industrial oils. Tap a row below to quote that formulation on the <a href="contact.html">RFQ form</a>.</p>
+      <p class="lede" style="margin-bottom:2rem; font-size:0.95rem;">Standard trade packs run pails and barrels across the range quantities available on request for the higher-volume industrial oils. Tap a row below to quote that product on the <a href="contact.html">RFQ form</a>.</p>
 
       <div class="filter-bar">
-        <div class="filter-tabs" role="group" aria-label="Filter by range">
+        <div class="filter-tabs" role="tablist" aria-label="Filter by range">
           <button data-cat="All" class="is-active" aria-pressed="true">All formulations</button>
           <button data-cat="Automotive" id="automotive" aria-pressed="false">Automotive</button>
           <button data-cat="Industrial" id="industrial" aria-pressed="false">Industrial &amp; specialty</button>
@@ -88,7 +76,7 @@
           <span></span>
           <span>Formulation</span>
           <span>Range</span>
-          <span class="head-seg">Segment</span>
+          <span>Segment</span>
         </div>
         <div id="tableBody"></div>
       </div>

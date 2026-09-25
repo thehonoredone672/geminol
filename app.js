@@ -5,29 +5,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
   const toggle = document.querySelector('.nav-toggle');
-  const menu = document.querySelector('.nav-panel');
-
-  // Keep the full-screen mobile panel positioned exactly below the header,
-  // whatever its actual rendered height (logo wraps, font swap, etc).
-  if (header) {
-    const setHeaderHeight = () => {
-      document.documentElement.style.setProperty('--header-h', `${header.offsetHeight}px`);
-    };
-    setHeaderHeight();
-    window.addEventListener('resize', setHeaderHeight);
-  }
+  const menu = document.querySelector('.nav-menu');
 
   // Mobile nav: open/close, close on link click, outside click, and Escape
   if (toggle && menu) {
     const closeMenu = () => {
       menu.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
     };
     const openMenu = () => {
       menu.classList.add('is-open');
       toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
     };
 
     toggle.addEventListener('click', (e) => {
@@ -48,13 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeMenu();
         toggle.focus();
       }
-    });
-
-    // A resize past the mobile breakpoint (e.g. rotating to landscape,
-    // or a tablet/desktop dev-tools resize) shouldn't leave the panel
-    // open with the page scroll locked.
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 720) closeMenu();
     });
   }
 
@@ -100,14 +81,14 @@ const GEMINOL_CATALOG = [
   { name: 'ENGINE OIL ELX SAE 10W/30', category: 'Automotive', segment: 'Engine Oil' },
   { name: 'ENGINE OIL ELB SAE 20W/50', category: 'Automotive', segment: 'Engine Oil' },
   { name: 'ENGINE OIL BLX SAE 15W/50', category: 'Automotive', segment: 'Engine Oil' },
-  { name: 'TT OIL', category: 'Automotive', segment: 'Transmission Oil' },
-  { name: 'SYN TT', category: 'Automotive', segment: 'Transmission Oil' },
+  { name: 'TT OIL', category: 'Automotive', segment: 'Two-Stroke Engine Oil' },
+  { name: 'SYN TT', category: 'Automotive', segment: 'Two-Stroke Engine Oil' },
   { name: 'GEAREX SAE 90', category: 'Automotive', segment: 'Gear Oil' },
   { name: 'GEAREX SAE 140', category: 'Automotive', segment: 'Gear Oil' },
   { name: 'GEAREX SAE 80W/90', category: 'Automotive', segment: 'Gear Oil' },
   { name: 'GEAREX SAE 85W/140', category: 'Automotive', segment: 'Gear Oil' },
   { name: 'GEAREX SAE 80W', category: 'Automotive', segment: 'Gear Oil' },
-  { name: 'GEAREX TQ', category: 'Automotive', segment: 'Gear Oil' },
+  { name: 'GEAREX TQ', category: 'Automotive', segment: 'Transmission Gear Oil' },
   { name: 'FRONT FORK OIL 24', category: 'Automotive', segment: 'Fork Oil' },
 
   { name: 'MACHINETEK 32', category: 'Industrial', segment: 'Machine Oil' },

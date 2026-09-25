@@ -4,11 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Geminol Lubes Corporation — Specialist in All Types of Lubricants</title>
-<meta name="description" content="Geminol Lubes Corporation, Coimbatore — ISO 9001:2015 certified manufacturer of automotive and industrial lubricants since 2007. 71 formulations, chemist-led compounding.">
-<link rel="icon" href="geminol-logo-r.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<meta name="description" content="Geminol Lubes Corporation, Coimbatore — ISO 9001:2015 certified manufacturer of automotive and industrial lubricants since 1990. 71 formulations, chemist-led compounding.">
+<link rel="icon" href="geminol-logo.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,27 +15,18 @@
   <div class="header-inner">
     <a href="index.html" class="brand">
       <img src="geminol-logo-r.png" alt="Geminol Lubes Corporation, registered trademark" class="logo-img">
-      <span class="brand-info">
-        <span class="brand-tagline">Genuine Mineral Oil Blended Lubricating Oils</span>
-        <span class="brand-sector">Automobile and Industrial Sector</span>
-      </span>
+      <span class="brand-tag">Lubes Corporation</span>
     </a>
     <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primaryNav">
       <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </button>
     <nav>
-      <div class="nav-panel" id="primaryNav">
-        <ul class="nav-menu">
-          <li><a href="index.html" class="active" aria-current="page">Overview</a></li>
-          <li><a href="about.html">Profile</a></li>
-          <li><a href="products.html">Catalog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-quick">
-          <a href="tel:+917598373183" class="nav-quick-link"><span class="k">Call the works</span><span class="v">7598373183</span></a>
-          <a href="mailto:geminolcbe@gmail.com" class="nav-quick-link"><span class="k">Email the desk</span><span class="v">geminolcbe@gmail.com</span></a>
-        </div>
-      </div>
+      <ul class="nav-menu" id="primaryNav">
+        <li><a href="index.html" class="active" aria-current="page">Overview</a></li>
+        <li><a href="about.html">Profile</a></li>
+        <li><a href="products.html">Catalog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
   </div>
 </header>
@@ -52,7 +40,7 @@
         <span class="badge">ISO 9001:2015 certified manufacturer</span>
         <h1>Lubricants engineered to hold their film under load.</h1>
         <blockquote class="motto">
-          "Our motto is to make quality products that reach every industry and automobile sector that requires lubricants."
+          "Our motto is to make quality products that reach every industry and automotive sector that requires lubricants."
           <cite>— Founding principle, Geminol Lubes Corporation</cite>
         </blockquote>
         <div class="btn-row">
@@ -66,7 +54,7 @@
           <h3>Viscosity vs. temperature</h3>
           <span>illustrative, SAE reference bands</span>
         </div>
-        <svg class="chart-svg" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart comparing how viscosity drops with rising temperature for a virgin mineral base oil versus Geminol's lubricants">
+        <svg class="chart-svg" viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart comparing how viscosity drops with rising temperature for an untreated mineral oil versus Geminol's semi-synthetic Lubricants">
           <!-- axes -->
           <line x1="46" y1="20" x2="46" y2="248" stroke="#C9C4B4" stroke-width="1"/>
           <line x1="46" y1="248" x2="460" y2="248" stroke="#C9C4B4" stroke-width="1"/>
@@ -82,15 +70,15 @@
           <text x="230" y="266" font-family="IBM Plex Mono" font-size="9" fill="#85897F">70°C</text>
           <text x="420" y="266" font-family="IBM Plex Mono" font-size="9" fill="#85897F">150°C</text>
 
-          <!-- virgin mineral base oil : steep drop -->
+          <!-- untreated mineral oil : steep drop -->
           <path id="curveBase" class="draw-line" d="M46 40 C 120 60, 160 190, 460 236" fill="none" stroke="#A9A392" stroke-width="2" stroke-dasharray="4 4"/>
 
-          <!-- Geminol blend : flatter curve -->
-          <path id="curveBlend" class="draw-line delay" d="M46 55 C 160 90, 260 150, 460 190" fill="none" stroke="#E2681C" stroke-width="2.5"/>
+          <!-- Geminol Lubricants : flatter curve -->
+          <path id="curveLubricants" class="draw-line delay" d="M46 55 C 160 90, 260 150, 460 190" fill="none" stroke="#E2681C" stroke-width="2.5"/>
         </svg>
         <div class="chart-legend">
-          <button type="button" class="legend-item" data-curve="curveBase"><i style="background:#A9A392"></i>Virgin mineral base oil</button>
-          <button type="button" class="legend-item" data-curve="curveBlend"><i style="background:#E2681C"></i>Lubricants</button>
+          <button type="button" class="legend-item" data-curve="curveBase"><i style="background:#A9A392"></i>Untreated mineral base</button>
+          <button type="button" class="legend-item" data-curve="curveLubricants"><i style="background:#E2681C"></i>Geminol semi-synthetic Lubricants</button>
         </div>
       </div>
     </div>
@@ -100,8 +88,8 @@
   <div class="container">
     <div class="stat-line">
       <div class="stat">
-        <span class="num">2007</span>
-        <span class="label">Founded, now Geminol Lubes Corporation</span>
+        <span class="num">1990</span>
+        <span class="label">Specialised in lubricants since June 1990</span>
       </div>
       <div class="stat">
         <span class="num">71</span>
@@ -125,8 +113,8 @@
         </div>
         <div class="doc-col">
           <span class="kicker">Compounding standard</span>
-          <h3>Genuine mineral oil, semi-synthetic blend.</h3>
-          <p>We formulated virgin base oil stocks and additives — not recycled feedstock — so fleets and factory floors get consistent performance and less unscheduled downtime, batch after batch.</p>
+          <h3>Genuine mineral oil, semi-synthetic Lubricants.</h3>
+          <p>We work from severely hydrocracked paraffinic base stocks rather than recycled feedstock, so fleets and factory floors get consistent performance and less unscheduled downtime, batch after batch.</p>
         </div>
       </div>
     </div>
@@ -140,11 +128,11 @@
       <div class="reason-grid">
         <div class="reason">
           <h3>Chemist-led compounding</h3>
-          <p>Every formulation is signed off by the same analytical chemist who has run the works since 2007 — not a rotating shift of blenders.</p>
+          <p>Every formulation is signed off by the same analytical chemist who has run the works since 1990 — not a rotating shift of Lubricantsers.</p>
         </div>
         <div class="reason">
-          <h3>No recycled feedstock</h3>
-          <p>Base stocks are virgin base oils and additives, chosen specifically to hold film stability under sustained mechanical load.</p>
+          <h3>Base stock</h3>
+          <p>Base stocks are severely hydrocracked paraffinic oils, chosen specifically to hold film stability under sustained mechanical load.</p>
         </div>
         <div class="reason">
           <h3>ISO 9001:2015 system</h3>
@@ -152,7 +140,7 @@
         </div>
         <div class="reason">
           <h3>Built for reorder volumes</h3>
-          <p>Pails, barrels or tankers — packaging is set up for recurring industrial supply, not one-off retail quantities.</p>
+          <p>Pails and barrels packaging is set up for recurring industrial supply, not one-off retail quantities.</p>
         </div>
       </div>
     </div>
@@ -176,7 +164,7 @@
           <div>
             <span class="category-count">16</span>
             <h3>Automotive oils</h3>
-            <p>Engine oils, gear oils, transmission and fork oil for two-wheelers, commercial vehicles and tractors.</p>
+            <p>Engine oils, gear oils, transmission gear oils and fork oil for two-wheelers, commercial vehicles and tractors.</p>
           </div>
           <span class="cat-link">Browse the automotive range</span>
         </a>
