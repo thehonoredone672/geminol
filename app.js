@@ -145,5 +145,6 @@ const GEMINOL_CATALOG = [
   { name: 'TRANSFORMER OIL', category: 'Industrial', segment: 'Transformer Oil' },
   { name: 'AP3 GREASE (Ca) — 180 kg', category: 'Industrial', segment: 'Grease' },
   { name: 'MP GREASE (Li) — 180 kg', category: 'Industrial', segment: 'Grease' },
-  { name: 'TOOLWAY M 68/220', category: 'Industrial', segment: 'Way Oil' },
+  { name: 'TOOLWAY M 68/220', category: 'Industrial', segment: 'Way lube oil' },
+  { name: 'TOOLWAY M 220', category: 'Industrial', segment: 'Way lube oil' },
 ];
