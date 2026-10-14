@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Homepage -->
+    <url>
+        <loc>https://geminolcbe.in/</loc>
+    </url>
+
+    <!-- Company Profile -->
+    <url>
+        <loc>https://geminolcbe.in/about.html</loc>
+    </url>
+
+    <!-- Product Catalog -->
+    <url>
+        <loc>https://geminolcbe.in/products.html</loc>
+    </url>
+
+    <!-- Contact and RFQ -->
+    <url>
+        <loc>https://geminolcbe.in/contact.html</loc>
+    </url>
+
+</urlset>
